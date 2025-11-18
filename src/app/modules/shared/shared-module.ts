@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Sidenav } from './components/sidenav/sidenav';
 import { MaterialModule } from './material-module';
-import { R } from '@angular/cdk/keycodes';
 import { Router, RouterModule } from '@angular/router';
-
 
 
 @NgModule({

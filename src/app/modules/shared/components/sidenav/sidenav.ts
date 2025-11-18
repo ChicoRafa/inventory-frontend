@@ -11,9 +11,9 @@ export class Sidenav {
 
   mobileQuery: MediaQueryList;
   menuNav = [
-    {name: 'Home', route: '/home', icon: 'home' },
-    {name: 'Categories', route: '/categories', icon: 'category' },
-    {name: 'Products', route: '/products', icon: 'production_quantity_limits' },
+    {name: 'Home', route: 'home', icon: 'home' },
+    {name: 'Categories', route: 'category', icon: 'category' },
+    {name: 'Products', route: 'products', icon: 'production_quantity_limits' },
   ]
 
   constructor(media: MediaMatcher) {
