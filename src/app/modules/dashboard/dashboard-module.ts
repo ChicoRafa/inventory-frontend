@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { Home } from './components/home/home';
 import { Dashboard } from './pages/dashboard';
 import { RouterModule } from '@angular/router';
+import { S } from '@angular/cdk/keycodes';
+import { SharedModule } from '../shared/shared-module';
 
 
 
@@ -13,7 +15,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ]
 })
 export class DashboardModule { }
