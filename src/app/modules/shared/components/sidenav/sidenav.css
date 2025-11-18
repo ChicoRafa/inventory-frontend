@@ -2,3 +2,59 @@ mat-toolbar {
   background-color: var(--mat-sys-primary);
   color: var(--mat-sys-on-primary);
 }
+
+h1.app-name {
+  margin-left: 8px;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.is-mobile .dashboard-toolbar{
+  position: fixed;
+  z-index: 2;
+}
+
+.sidenav-container {
+  flex: 1;
+  height: 100%;
+}
+
+.is-mobile .sidenav-container{
+  flex: 1 0 auto;
+}
+
+mat-sidenav {
+  width: 250px;
+  background-color: var(--mat-sys-surface);
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+
+mat-sidenav-content {
+  background-color: var(--mat-sys-surface-container-low);
+}
+
+ul li {
+  list-style: none;
+}
+
+div ul {
+  display: flex;
+  align-items: center;
+}
+
+.right{
+  margin-left: auto;
+}
+
+.profile-card{
+  text-align: center;
+  padding: 0 20px 20px 20px;
+}
+
+.header{
+  margin-top: 20px;
+}
