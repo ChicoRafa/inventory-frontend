@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Category } from './components/category/category';
+import { CategoryDialog } from './components/category-dialog/category-dialog';
 import { MaterialModule } from '../shared/material-module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -8,7 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    Category
+    Category,
+    CategoryDialog
   ],
   imports: [
     CommonModule,

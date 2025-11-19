@@ -12,7 +12,7 @@
         <div class="right">
             <ul>
                 <li>
-                    <button mat-raised-button color="primary">Add Categories</button>
+                    <button mat-raised-button color="primary" (click)="openCategoryDialog()">Add Categories</button>
                 </li>
             </ul>
         </div>
@@ -21,10 +21,10 @@
     <div mat-card-image></div>
     <mat-card-content>
         <table mat-table [dataSource]="dataSource" class="mat-cell">
-            <!-- ID Column -->
+            <!-- Number Column -->
             <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> ID </th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                <th mat-header-cell *matHeaderCellDef> # </th>
+                <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
             </ng-container>
 
             <!-- Name Column -->
@@ -43,7 +43,7 @@
              <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Actions </th>
                 <td mat-cell *matCellDef="let element; let i=index;">
-                    <button mat-icon-button color="accent">
+                    <button mat-icon-button color="accent" (click)="openCategoryDialog(element)">
                         <mat-icon aria-label="Edit">edit</mat-icon>
                     </button>
                     <button mat-icon-button color="warn">
