@@ -1,0 +1,9 @@
+mat-dialog-content {
+  min-width: 300px;
+  padding: 20px;
+}
+
+mat-dialog-content p {
+  margin: 0;
+  color: var(--mat-dialog-content-text-color, rgba(0, 0, 0, 0.87));
+}

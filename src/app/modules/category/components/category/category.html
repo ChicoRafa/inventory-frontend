@@ -46,7 +46,7 @@
                     <button mat-icon-button color="accent" (click)="openCategoryDialog(element)">
                         <mat-icon aria-label="Edit">edit</mat-icon>
                     </button>
-                    <button mat-icon-button color="warn">
+                    <button mat-icon-button color="warn" (click)="confirmDelete(element.id, element.name)">
                         <mat-icon aria-label="Delete">delete</mat-icon>
                     </button>
                 </td>

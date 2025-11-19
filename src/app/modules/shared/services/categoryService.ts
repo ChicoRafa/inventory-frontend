@@ -26,4 +26,25 @@ export class CategoryService {
     const endpoint = `${apiUrl}/categories`;
     return this.http.post(endpoint, body);
   }
+
+  /**
+   * Update an existing category
+   * @param id Category ID to update
+   * @param body Updated category data
+   * @returns Observable of the updated category
+   */
+  updateCategory(id: number, body: any) {
+    const endpoint = `${apiUrl}/categories/${id}`;
+    return this.http.put(endpoint, body);
+  }
+
+  /**
+   * Delete a category
+   * @param id Category ID to delete
+   * @returns Observable of the deletion result
+   */
+  deleteCategory(id: number) {
+    const endpoint = `${apiUrl}/categories/${id}`;
+    return this.http.delete(endpoint);
+  }
 }
