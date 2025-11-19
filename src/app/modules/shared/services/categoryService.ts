@@ -18,6 +18,16 @@ export class CategoryService {
   }
 
   /**
+   * Get a category by ID
+   * @param id Category ID to retrieve
+   * @returns Observable of the category
+   */
+  getCategoryById(id: any) {
+    const endpoint = `${apiUrl}/categories/${id}`;
+    return this.http.get(endpoint);
+  }
+
+  /**
    * Save a new category
    * @param body Category data to save
    * @returns Observable of the saved category

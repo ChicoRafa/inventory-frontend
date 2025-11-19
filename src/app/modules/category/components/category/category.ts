@@ -1,4 +1,4 @@
-import { Component, inject, effect, OnInit } from '@angular/core';
+import { Component, inject, effect, OnInit, ViewChild } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { CategoryService } from '../../../shared/services/categoryService';
 import { MatTableDataSource } from '@angular/material/table';
@@ -6,12 +6,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { CategoryDialog, CategoryDialogResult } from '../category-dialog/category-dialog';
 import { ConfirmAction } from '../../../shared/components/confirm-action/confirm-action';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-category',
   standalone: false,
   templateUrl: './category.html',
-  styleUrl: './category.css',
+  styleUrls: ['./category.css'],
 })
 export class Category {
   private categoryService = inject(CategoryService);
@@ -20,6 +21,9 @@ export class Category {
 
   displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
   dataSource = new MatTableDataSource<CategoryElement>();
+  
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
   // Signal that automatically updates with data from the service
   categories = toSignal(this.categoryService.getCategories(), {
@@ -27,10 +31,8 @@ export class Category {
   });
 
   constructor() {
-    // Effect para logging cuando cambia el signal
     effect(() => {
       const data = this.categories();
-      // console.log('Categories:', data);
       // Only process if there is real data (not the empty initialValue)
       if (data && Object.keys(data).length > 0) {
         this.processCategoriesResponse(data);
@@ -60,6 +62,7 @@ export class Category {
       });
       // Actualizar los datos en lugar de crear nuevo dataSource
       this.dataSource.data = dataCategory;
+      this.dataSource.paginator = this.paginator;
     }
   }
 
@@ -89,7 +92,7 @@ export class Category {
           this.categoryService.saveCategory(result.data).subscribe({
             next: (response) => {
               this.openSnackBar('Category created successfully', 'Success');
-              this.loadCategories(); // Recargar desde el backend
+              this.loadCategories();
             },
             error: (error) => {
               this.openSnackBar('Error creating category', 'Error');
@@ -133,6 +136,22 @@ export class Category {
       error: (error) => {
         this.openSnackBar('Error deleting category', 'Error');
       },
+    });
+  }
+
+  search(query: string): void {
+    if (!query || query.trim().length === 0) {
+      return this.loadCategories();
+    }
+
+    this.categoryService.getCategoryById(query).subscribe({
+      next: (resp: any) => {
+        this.processCategoriesResponse(resp);
+      },
+      error: (error) => {
+        console.error('Error searching category:', error);
+        this.openSnackBar('Category not found', 'Error');
+      }
     });
   }
 }
