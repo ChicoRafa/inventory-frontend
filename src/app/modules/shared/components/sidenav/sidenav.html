@@ -6,17 +6,24 @@
     <div class="right">
       <ul>
         <li>
+          <button mat-icon-button (click)="toggleTheme()">
+            <mat-icon>{{ themeService.isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+          </button>
+        </li>
+        <li>
           <button mat-icon-button>
             <mat-icon>help_outline</mat-icon>
           </button>
         </li>
         <li>
-          <button mat-button [matMenuTriggerFor]="userMenu">
+          <button mat-icon-button [matMenuTriggerFor]="userMenu">
             <mat-icon>person_outline</mat-icon>
           </button>
           <mat-menu #userMenu="matMenu">
-            <mat-icon>exit_to_app</mat-icon>
-            Logout
+            <button mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              <span>Logout</span>
+            </button>
           </mat-menu>
         </li>
       </ul>

@@ -1,7 +1,5 @@
-mat-toolbar {
-  background-color: var(--mat-sys-primary);
-  color: var(--mat-sys-on-primary);
-}
+/* El color="primary" en el mat-toolbar del HTML ya aplica el color,
+   no necesitamos sobrescribirlo aquí */
 
 h1.app-name {
   margin-left: 8px;

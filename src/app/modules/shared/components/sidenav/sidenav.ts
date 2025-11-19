@@ -1,5 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,6 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './sidenav.css',
 })
 export class Sidenav {
+  themeService = inject(ThemeService);
 
   mobileQuery: MediaQueryList;
   menuNav = [
@@ -18,5 +20,9 @@ export class Sidenav {
 
   constructor(media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
+  }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 }
